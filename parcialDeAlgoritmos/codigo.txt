@@ -1,0 +1,85 @@
+//Datos de entrada
+//valorDelContrato
+//precioDelSeguro
+//valorDelRiesgo
+//valorDeLascondicionesParticulares
+//valorQueNoCubreElSeguro
+//socioUno
+//socioDos
+//socioConContratoEspecial
+//restaDeLaPoliza
+
+// Proceso 
+//Lo primero es la suma de los valores ingresados por el usuario para sacar el porcentaje de las polizas
+//Sacar los porcentajes si se cumple algunas de las condiciones, esto se hace dividiendo la cantidad ingresada en 100 y multplicarlo por el porcentajeDeLasPolizas
+// Una vez hecho lo anterior, se pueden repartir las cantidades en 2 dependiendo el tipo de caso que se ejecute
+
+//Datos de salida
+
+// El primer dato de salida es la suma de las polizas
+// luego a ese resultado de la suma se le saca el porcentaje y el resultado del porcentaje se le puede asignar en partes iguales a los socios 
+
+Algoritmo seguraPro
+	Definir valorDelContrato Como Real
+	Definir precioDelSeguro Como Real
+	Definir valorDelRiesgo como real
+	Definir valorDeLascondicionesParticulares Como Real
+	Definir valorQueNoCubreElSeguro como real
+	Definir socioUno Como Real
+	Definir socioDos Como Real
+	Definir socioConContratoEspecial Como Real
+	Definir restaDeLaPoliza Como Real
+	
+	Escribir "Ingrese el valor del contrato del empleado"
+	Leer valorDelContrato
+	
+	Escribir "Ingrese el precio del seguro"
+	Leer precioDelSeguro
+	
+	Escribir "Ingrese el valor del riesgo del seguro"
+	Leer valorDelRiesgo
+	
+	Escribir "Ingrese el valor de las condiciones particulares del empleado"
+	Leer valorDeLascondicionesParticulares
+	
+	Escribir "Ingrese el precio que no cubre el seguro"
+	Leer valorQueNoCubreElSeguro
+	
+	sumaDeLasPolizas = valorDelContrato + precioDelSeguro + valorDelRiesgo + valorDeLascondicionesParticulares + valorQueNoCubreElSeguro
+	
+	Escribir "Esta es la suma de las polizas del empleado: ", sumaDeLasPolizas
+	
+	Si sumaDeLasPolizas <= 100000 Entonces
+		porcentajeDeLasPolizas = sumaDeLasPolizas / 100 * 20
+		distribucionDelPorcentajeParaLosSocios = porcentajeDeLasPolizas / 2
+		resultadoDelPorcentaje = distribucionDelPorcentajeParaLosSocios + socioUno
+		resultadoDelPorcentaje2 = distribucionDelPorcentajeParaLosSocios + socioDos
+		
+		Escribir "El 20% de las polizas ingresadas es de: ", porcentajeDeLasPolizas
+		Escribir "Lo que le corresponde a cada socio es de: ", "socio uno: " resultadoDelPorcentaje, " socio dos: ", resultadoDelPorcentaje2
+	Fin Si
+	
+	Si sumaDeLasPolizas > 100000 y sumaDeLasPolizas < 120000 Entonces
+		Escribir "Si su suma fue mayor a 100,000 restele lo que sigue después de ese 100,000"
+		Leer restaDeLaPoliza
+		
+		operacionDeLaResta = sumaDeLasPolizas - restaDeLaPoliza
+		
+		Si operacionDeLaResta > 100000 Entonces
+			Escribir "Este valor no es el correcto para hacer la conversión. Haga la resta correctamente"
+			Leer restaDeLaPoliza
+			operacionDeLaResta = sumaDeLasPolizas - restaDeLaPoliza
+			
+			Si operacionDeLaResta <= 100000 Entonces
+				resultadoDelPorcentajeCaso2 = operacionDeLaResta / 100 * 20
+				distribucionDelPorcentajeParaLosSociosCaso2 = resultadoDelPorcentajeCaso2 / 2
+				resultadoDelPorcentaje1Caso2 = distribucionDelPorcentajeParaLosSociosCaso2 + socioUno
+				resultadoDelPorcentaje2Caso2 = distribucionDelPorcentajeParaLosSociosCaso2 + socioDos
+				
+				Escribir "El 20% de las polizas ingresadas es de: ", resultadoDelPorcentajeCaso2
+				Escribir "Lo que le corresponde a cada socio es de: ", "socio uno: " resultadoDelPorcentaje1Caso2 " socio dos: ", resultadoDelPorcentaje2Caso2
+			Fin Si
+		FinSi
+		
+	Fin Si
+FinAlgoritmo
